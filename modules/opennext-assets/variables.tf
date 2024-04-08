@@ -9,7 +9,10 @@ variable "default_tags" {
   default     = {}
 }
 
-
+variable "region" {
+  type        = string
+  description = "The deployment region to be used by the AWS provider."
+}
 
 variable "assets_path" {
   type        = string
@@ -24,6 +27,11 @@ variable "cache_path" {
 variable "server_function_role_arn" {
   type        = string
   description = "The IAM role ARN of the Next.js server lambda function"
+}
+
+variable "static_asset_cache_config" {
+  type        = string
+  description = "Static asset cache config"
 }
 
 variable "logging_config" {

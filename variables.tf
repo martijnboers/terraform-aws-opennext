@@ -15,6 +15,16 @@ variable "default_tags" {
 }
 
 /**
+ * AWS Provider Variables
+ **/
+variable "region" {
+  type        = string
+  description = "The deployment region to be used by the AWS provider."
+  default     = null
+}
+
+
+/**
  * Route53 (DNS) Variables
  **/
 variable "create_route53_records" {
@@ -32,6 +42,15 @@ variable "evaluate_target_health" {
   type        = bool
   default     = false
   description = "Allow Route53 to determine whether to respond to DNS queries by checking the health of the record set"
+}
+
+/**
+ * OpenNext Assets variables
+**/
+variable "static_asset_cache_config" {
+  type        = string
+  description = "Static asset cache config"
+  default     = "public,max-age=0,s-maxage=31536000,must-revalidate"
 }
 
 /**
@@ -317,6 +336,7 @@ variable "cloudfront" {
       override = bool
       value    = string
     })))
+    price_class = optional(string)
     geo_restriction = optional(object({
       restriction_type = string
       locations        = list(string)
